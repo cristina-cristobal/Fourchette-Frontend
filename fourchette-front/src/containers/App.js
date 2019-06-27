@@ -7,7 +7,8 @@ export default class App extends Component{
   constructor(){
     super()
     this.state = {
-      allRecipes: []
+      allRecipes: [],
+      clickedRecipe: []
     }
   }
 
@@ -19,11 +20,17 @@ export default class App extends Component{
     }))
   }
 
+  openRecipe = (dish) => {
+    this.setState({
+      clickedRecipe: dish
+    })
+  }
+
   render(){
   return (
     <div>
       <Navbar />
-      <Home recipes={this.state.allRecipes}/>
+      <Home recipes={this.state.allRecipes} openRecipe={this.openRecipe}/>
     </div>
   )
 }
