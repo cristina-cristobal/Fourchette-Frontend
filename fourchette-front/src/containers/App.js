@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../App.css';
 import Navbar from '../components/Navbar.js'
 import Home from '../components/Home'
+import Recipe from './Recipe'
 
 export default class App extends Component{
   constructor(){
@@ -31,6 +32,7 @@ export default class App extends Component{
     <div>
       <Navbar />
       <Home recipes={this.state.allRecipes} openRecipe={this.openRecipe}/>
+      <Recipe /> 
     </div>
   )
 }
