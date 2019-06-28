@@ -1,12 +1,10 @@
 import React from 'react';
-import {Card, Image} from 'semantic-ui-react'
+// import {Card, Image} from 'semantic-ui-react'
 
 const RecipeCard = (props) => {
   return (
-    <div>
-      <Card onClick={() => {props.openRecipe(props.recipe)}}
-      header={props.recipe.name}
-      />
+    <div onClick={() => {props.openRecipe(props.recipe)}}>
+    {props.recipe.name}
     </div>
   )
 }

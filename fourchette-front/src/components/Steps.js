@@ -4,7 +4,9 @@ export default class Steps extends Component {
   render(){
     return(
       <div>
-        Steps here!
+      Steps------------------------------
+        {(this.props.recipe.steps) ? this.props.recipe.steps : null}
+        ---------------------------------
       </div>
     )
   }

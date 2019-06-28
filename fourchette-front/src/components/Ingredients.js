@@ -4,7 +4,11 @@ export default class Ingredients extends Component {
   render(){
     return(
       <div>
-        Ingredients here!
+      Ingredients ------------------
+        <ul>
+        {(this.props.recipe.ingredients) ? this.props.recipe.ingredients.map((ingredient) => <li>{ingredient.description}</li>)  : null}
+        </ul>
+        _________________________
       </div>
     )
   }

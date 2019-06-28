@@ -4,7 +4,9 @@ export default class Summary extends Component {
   render(){
     return(
       <div>
-        Summary here!
+      Summary----------------------------
+      {this.props.recipe.intro}
+      -----------------------------------
       </div>
     )
   }

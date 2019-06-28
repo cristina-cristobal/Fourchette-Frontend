@@ -6,9 +6,7 @@ export default class CardContainer extends Component {
   render(){
     return(
       <div>
-        <Card.Group itemsPerRow={3}>
         {this.props.recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} openRecipe={this.props.openRecipe}/>)}
-        </Card.Group>
       </div>
     )
   }
