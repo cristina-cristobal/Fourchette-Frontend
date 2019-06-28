@@ -32,7 +32,7 @@ export default class App extends Component{
     <div>
       <Navbar />
       <Home recipes={this.state.allRecipes} openRecipe={this.openRecipe}/>
-      <Recipe clickedRecipe={this.state.clickedRecipe}/>
+      <Recipe clickedRecipe={this.state.clickedRecipe} allRecipes={this.state.allRecipes}/>
     </div>
   )
 }

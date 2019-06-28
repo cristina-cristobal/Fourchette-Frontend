@@ -12,7 +12,7 @@ export default class RecipeBody extends Component {
         <Summary recipe={this.props.clickedRecipe}/>
         <Ingredients recipe={this.props.clickedRecipe}/>
         <Steps recipe={this.props.clickedRecipe}/>
-        <Tweaks recipe={this.props.clickedRecipe}/>
+        <Tweaks recipe={this.props.clickedRecipe} allRecipes={this.props.allRecipes}/>
       </div>
     )
   }
