@@ -6,13 +6,12 @@ import Tweaks from '../components/Tweaks'
 
 export default class RecipeBody extends Component {
   render(){
-    {console.log(this.props)}
     return(
       <div>
         Recipe Page
         <Summary recipe={this.props.clickedRecipe}/>
         <Ingredients recipe={this.props.clickedRecipe}/>
-        <Steps recipe={this.props.clickedRecipe} like={this.props.like}/>
+        <Steps recipe={this.props.clickedRecipe} like={this.props.like} tweakingRecipe={this.props.tweakingRecipe}/>
         <Tweaks recipe={this.props.clickedRecipe} allRecipes={this.props.allRecipes}/>
       </div>
     )

@@ -8,7 +8,7 @@ export default class Steps extends Component {
         {(this.props.recipe.steps) ? this.props.recipe.steps : null}
         ---------------------------------
         <div>
-        <button>Tweak</button>
+        <button onClick={() => {this.props.tweakingRecipe(this.props.recipe)}}>Tweak</button>
         <button onClick={() => {this.props.like(this.props.recipe)}}>Save</button>
         </div>
       </div>
