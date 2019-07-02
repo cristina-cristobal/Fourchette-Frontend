@@ -16,7 +16,6 @@ export default class App extends Component{
       mySavedRecipes: [],
       myTweakedRecipes: [],
       myRecipes: [],
-      tweaking: []
 
     }
   }
@@ -70,9 +69,13 @@ export default class App extends Component{
       <Navbar />
       <Switch>
 
-      <Route exact path='/recipes/edit' render={() => {return(<EditRecipe />)
-      }} />
-
+      <Route exact path='/recipes/:id/edit' render={(props) => {
+        let recipeId = props.match.params.id
+        let foundRecipe = this.state.allRecipes.find(r => r.id == recipeId)
+          return ( foundRecipe !== undefined ?
+            <EditRecipe recipe={foundRecipe}/> : null
+          )
+        }}/>
           <Route exact path='/recipes/:id' render={(props) => {
             let recipeId = props.match.params.id
             let foundRecipe = this.state.allRecipes.find(r => r.id == recipeId)

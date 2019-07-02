@@ -5,6 +5,9 @@ export default class RecipeForm extends Component {
     return(
       <div>
       Recipe Form
+      Editing Recipe: {this.props.recipe.name}
+        <form>
+        </form>
       </div>
     )
   }

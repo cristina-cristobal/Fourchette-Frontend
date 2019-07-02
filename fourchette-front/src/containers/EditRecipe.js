@@ -8,7 +8,7 @@ export default class EditRecipe extends Component {
       <div>
         Edit Recipe Pg
         <EditBar />
-        <RecipeForm />
+        <RecipeForm recipe={this.props.recipe}/>
       </div>
     )
   }
