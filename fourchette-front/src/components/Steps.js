@@ -9,7 +9,7 @@ export default class Steps extends Component {
         ---------------------------------
         <div>
         <button>Tweak</button>
-        <button>Save</button>
+        <button onClick={() => {this.props.like(this.props.recipe)}}>Save</button>
         </div>
       </div>
     )

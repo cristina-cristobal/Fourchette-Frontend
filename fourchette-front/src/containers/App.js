@@ -4,13 +4,18 @@ import Navbar from '../components/Navbar.js'
 import Home from '../components/Home'
 import Recipe from './Recipe'
 import {Route, Switch} from 'react-router-dom'
+import Profile from './Profile'
 
 export default class App extends Component{
   constructor(){
     super()
     this.state = {
       allRecipes: [],
-      clickedRecipe: []
+      clickedRecipe: [],
+      mySavedRecipes: [],
+      myTweakedRecipes: [],
+      myRecipes: []
+
     }
   }
 
@@ -20,6 +25,29 @@ export default class App extends Component{
     .then(recipesArray => this.setState({
       allRecipes: recipesArray
     }))
+  }
+
+  like = (recipe) => {
+    let saveRecipe = {
+      // update user ID when you figure out how to work with different users/sessions
+      user_id: 1,
+      recipe_id: recipe.id
+    }
+
+    fetch('http://localhost:3000/likes', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(saveRecipe)
+    })
+      .then(res => res.json())
+      .then(newlySaved => { this.setState({
+        mySavedRecipes: [...this.state.mySavedRecipes, recipe]
+      })
+      })
+
   }
 
   openRecipe = (dish) => {
@@ -38,7 +66,7 @@ export default class App extends Component{
             let recipeId = props.match.params.id
             let foundRecipe = this.state.allRecipes.find(r => r.id == recipeId)
             return( foundRecipe !== undefined ?
-            <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes}/> : null
+            <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes} like={this.like}/> : null
            )}} />
         <Route exact path='/' render={() => {return (<Home recipes={this.state.allRecipes} openRecipe={this.openRecipe}/>)}} />
       </Switch>
@@ -46,6 +74,7 @@ export default class App extends Component{
   )
 }
 }
+// <Route exact path='/users/:id' render={() => {return(<Profile /> ) }} /> 
           //
           // <Recipe clickedRecipe={this.state.allRecipes.find(r => r.id === recipeId)} allRecipes={this.state.allRecipes}/>)}}/>
 

@@ -1,11 +1,15 @@
-import React, {Component} from 'react'
+import React from 'react'
+import {Link} from 'react-router-dom'
 
-export default class Navbar extends Component {
-  render(){
-    return(
-      <div>
-      Navbar goes here
-      </div>
-    )
-  }
+const Navbar = (props) => {
+  return(
+    <div className="ui inverted olive menu navbar">
+     <Link to="/" className="item">
+         <div className="content">Fourchette</div>
+     </Link>
+     <Link to="/" className="item">Home</Link>
+   </div>
+  )
 }
+
+export default Navbar
