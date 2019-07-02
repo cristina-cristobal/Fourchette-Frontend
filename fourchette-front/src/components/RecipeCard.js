@@ -4,7 +4,7 @@ import {Card, Image} from 'semantic-ui-react'
 const RecipeCard = (props) => {
   return (
     <div onClick={() => {props.openRecipe(props.recipe)}}>
-    <Card 
+    <Card
     header={props.recipe.name}
     description={props.recipe.user_id}/>
     </div>
