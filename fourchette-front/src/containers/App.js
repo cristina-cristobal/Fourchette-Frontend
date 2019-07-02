@@ -74,7 +74,7 @@ export default class App extends Component{
   )
 }
 }
-// <Route exact path='/users/:id' render={() => {return(<Profile /> ) }} /> 
+// <Route exact path='/users/:id' render={() => {return(<Profile /> ) }} />
           //
           // <Recipe clickedRecipe={this.state.allRecipes.find(r => r.id === recipeId)} allRecipes={this.state.allRecipes}/>)}}/>
 
