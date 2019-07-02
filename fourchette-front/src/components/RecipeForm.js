@@ -7,6 +7,7 @@ export default class RecipeForm extends Component {
       Recipe Form
       Editing Recipe: {this.props.recipe.name}
         <form>
+          {(this.props.recipe.ingredients) ? this.props.recipe.ingredients.map((ingredient) => <input placeholder={ingredient.description}></input>) : null}
         </form>
       </div>
     )
