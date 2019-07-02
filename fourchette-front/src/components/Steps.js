@@ -7,6 +7,10 @@ export default class Steps extends Component {
       Steps------------------------------
         {(this.props.recipe.steps) ? this.props.recipe.steps : null}
         ---------------------------------
+        <div>
+        <button>Tweak</button>
+        <button>Save</button>
+        </div>
       </div>
     )
   }

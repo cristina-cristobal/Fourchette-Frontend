@@ -6,6 +6,7 @@ import Tweaks from '../components/Tweaks'
 
 export default class RecipeBody extends Component {
   render(){
+    {console.log(this.props)}
     return(
       <div>
         Recipe Page

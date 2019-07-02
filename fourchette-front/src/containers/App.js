@@ -33,11 +33,13 @@ export default class App extends Component{
     <div>
       <Navbar />
       <Switch>
-        <Route exact path='/recipes/:id' render={(props) => {
-          let recipeId = props.match.params.id
-          {console.log(this.state.allRecipes.find(r => r.id === 3))}
-          return(
-          <Recipe clickedRecipe={() => {this.state.allRecipes.find(r => r.id === recipeId)}} allRecipes={this.state.allRecipes}/>)}}/>
+
+          <Route exact path='/recipes/:id' render={(props) => {
+            let recipeId = props.match.params.id
+            let foundRecipe = this.state.allRecipes.find(r => r.id == recipeId)
+            return( foundRecipe !== undefined ?
+            <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes}/> : null
+           )}} />
         <Route exact path='/' render={() => {return (<Home recipes={this.state.allRecipes} openRecipe={this.openRecipe}/>)}} />
       </Switch>
     </div>
@@ -46,3 +48,19 @@ export default class App extends Component{
 }
           //
           // <Recipe clickedRecipe={this.state.allRecipes.find(r => r.id === recipeId)} allRecipes={this.state.allRecipes}/>)}}/>
+
+
+
+
+
+
+
+
+          // <Route exact path='/recipes/:id' render={(props) => {
+          //   let recipeId = props.match.params.id
+          //   return( (this.state.allRecipes.find(r => r.id === recipeId)) != undefined) ?
+          //
+          //   <Recipe clickedRecipe={this.state.allRecipes.find(r => r.id === recipeId)} allRecipes={this.state.allRecipes}/> : null
+          // )}}
+          //
+          // />
