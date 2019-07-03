@@ -28,15 +28,15 @@ export default class App extends Component{
       allRecipes: recipesArray
     }))
 
-  //   fetch('http://localhost:3000/users')
-  //     .then(res => res.json())
-  //     .then(user => {
-  //       this.setState({
-  //         mySavedRecipes: user[0].
-  //       })
-  //     })
-  //
-  // }
+    fetch('http://localhost:3000/users')
+      .then(res => res.json())
+      .then(user => {
+        this.setState({
+          mySavedRecipes: user[0].recipes
+        })
+      })
+
+  }
 
   tweakingRecipe = (recipe) => {
     this.setState({
