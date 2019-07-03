@@ -5,7 +5,6 @@ export default class Home extends Component {
   render(){
     return(
       <div>
-        Homepage goes here
         <CardContainer recipes={this.props.recipes} openRecipe={this.props.openRecipe} like={this.props.like}/>
       </div>
     )

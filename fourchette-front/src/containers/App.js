@@ -5,6 +5,7 @@ import Home from '../components/Home'
 import Recipe from './Recipe'
 import {Route, Switch} from 'react-router-dom'
 import Profile from './Profile'
+import EditRecipe from './EditRecipe'
 
 export default class App extends Component{
   constructor(){
@@ -14,7 +15,7 @@ export default class App extends Component{
       clickedRecipe: [],
       mySavedRecipes: [],
       myTweakedRecipes: [],
-      myRecipes: []
+      myRecipes: [],
 
     }
   }
@@ -25,6 +26,12 @@ export default class App extends Component{
     .then(recipesArray => this.setState({
       allRecipes: recipesArray
     }))
+  }
+
+  tweakingRecipe = (recipe) => {
+    this.setState({
+      tweaking: [...this.state.tweaking, recipe]
+    })
   }
 
   like = (recipe) => {
@@ -62,11 +69,18 @@ export default class App extends Component{
       <Navbar />
       <Switch>
 
+      <Route exact path='/recipes/:id/edit' render={(props) => {
+        let recipeId = props.match.params.id
+        let foundRecipe = this.state.allRecipes.find(r => r.id == recipeId)
+          return ( foundRecipe !== undefined ?
+            <EditRecipe recipe={foundRecipe}/> : null
+          )
+        }}/>
           <Route exact path='/recipes/:id' render={(props) => {
             let recipeId = props.match.params.id
             let foundRecipe = this.state.allRecipes.find(r => r.id == recipeId)
             return( foundRecipe !== undefined ?
-            <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes} like={this.like}/> : null
+            <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes} like={this.like} tweakingRecipe={this.tweakingRecipe}/> : null
            )}} />
         <Route exact path='/' render={() => {return (<Home recipes={this.state.allRecipes} openRecipe={this.openRecipe}/>)}} />
       </Switch>
@@ -77,12 +91,6 @@ export default class App extends Component{
 // <Route exact path='/users/:id' render={() => {return(<Profile /> ) }} />
           //
           // <Recipe clickedRecipe={this.state.allRecipes.find(r => r.id === recipeId)} allRecipes={this.state.allRecipes}/>)}}/>
-
-
-
-
-
-
 
 
           // <Route exact path='/recipes/:id' render={(props) => {
