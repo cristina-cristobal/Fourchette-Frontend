@@ -21,12 +21,22 @@ export default class App extends Component{
   }
 
   componentDidMount(){
+
     fetch('http://localhost:3000/recipes')
     .then(res => res.json())
     .then(recipesArray => this.setState({
       allRecipes: recipesArray
     }))
-  }
+
+  //   fetch('http://localhost:3000/users')
+  //     .then(res => res.json())
+  //     .then(user => {
+  //       this.setState({
+  //         mySavedRecipes: user[0].
+  //       })
+  //     })
+  //
+  // }
 
   tweakingRecipe = (recipe) => {
     this.setState({
