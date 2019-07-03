@@ -1,7 +1,25 @@
 import React, {Component} from 'react'
 import { Button, Checkbox, Form, TextArea, Text } from 'semantic-ui-react'
 
-export default class RecipeForm extends Component {
+export default class TweakForm extends Component {
+  constructor(){
+    super()
+    this.state = {
+      name: '',
+      intro: '',
+      steps: '',
+      notes: '',
+      ingredients: []
+    }
+  }
+
+  handleChange = (event) => {
+    console.log("event.target.name:", event.target.name, ". event.target.value:", event.target.value)
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
   render(){
     return(
       <div>
@@ -15,6 +33,8 @@ export default class RecipeForm extends Component {
             label='Name'
             placeholder={this.props.recipe.name}
             width={10}
+            name='name'
+            onChange={(event) => {this.handleChange(event)}}
             />
           </div>
           <br></br>
@@ -24,6 +44,8 @@ export default class RecipeForm extends Component {
             control={TextArea}
             label='Introduction. Tell us about your recipe. What did you tweak? What did you serve it with?'
             width={10}
+            name='intro'
+            onChange={(event) => {this.handleChange(event)}}
             />
           </div>
 
@@ -43,6 +65,7 @@ export default class RecipeForm extends Component {
                 placeholder={this.props.recipe.steps}
                 width={10}
                 rows={12}
+                name='steps'
               /> )
               : null }
           </div>
@@ -53,11 +76,12 @@ export default class RecipeForm extends Component {
             control={TextArea}
             label='Special Instructions (e.g., substitution ideas, tips on a tricky part of the recipe)'
             width={10}
+            name='notes'
             />
           </div>
           <br></br>
           <div>
-          <Form.Button>Submit</Form.Button>
+          <Form.Button onClick={this.props.tweakPost}>Submit</Form.Button>
           </div>
         </Form>
       </div>

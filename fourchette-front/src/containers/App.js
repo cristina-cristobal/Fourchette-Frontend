@@ -16,6 +16,7 @@ export default class App extends Component{
       mySavedRecipes: [],
       myTweakedRecipes: [],
       myRecipes: [],
+      
 
     }
   }
@@ -74,6 +75,10 @@ export default class App extends Component{
     })
   }
 
+  tweakPost = (e) => {
+    console.log(e)
+  }
+
   render(){
   return (
     <div>
@@ -84,7 +89,7 @@ export default class App extends Component{
         let recipeId = props.match.params.id
         let foundRecipe = this.state.allRecipes.find(r => r.id == recipeId)
           return ( foundRecipe !== undefined ?
-            <EditRecipe recipe={foundRecipe}/> : null
+            <EditRecipe recipe={foundRecipe} tweakPost={this.tweakPost}/> : null
           )
         }}/>
           <Route exact path='/recipes/:id' render={(props) => {

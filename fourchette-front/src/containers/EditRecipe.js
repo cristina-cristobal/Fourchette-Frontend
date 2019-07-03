@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import RecipeForm from '../components/RecipeForm'
+import TweakForm from '../components/TweakForm'
 import EditBar from '../components/EditBar'
 
 export default class EditRecipe extends Component {
@@ -8,7 +8,7 @@ export default class EditRecipe extends Component {
       <div>
         Edit Recipe Pg
         <EditBar />
-        <RecipeForm recipe={this.props.recipe}/>
+        <TweakForm recipe={this.props.recipe} tweakPost={this.props.tweakPost}/>
       </div>
     )
   }
