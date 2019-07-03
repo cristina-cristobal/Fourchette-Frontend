@@ -20,6 +20,14 @@ export default class TweakForm extends Component {
     })
   }
 
+  handleIngredients = (event) => {
+    console.log('event.target.name', event.target.name, ". event.target.value", event.target.value)
+    this.setState({
+      // currently this will add each new character on change to state... need to only push finalized value
+      ingredients: [...this.state.ingredients, event.target.value]
+    })
+  }
+
   render(){
     return(
       <div>
@@ -54,7 +62,9 @@ export default class TweakForm extends Component {
           <div>
             <b>Ingredients</b>
               {(this.props.recipe.ingredients) ? this.props.recipe.ingredients.map((ingredient) => <div>
-                <Form.Field width={6}> <input placeholder={ingredient.description}/></Form.Field></div>) : null}
+                <Form.Field width={6}> <input placeholder={ingredient.description}
+                name='ingredients'
+                onChange={(event) => (this.handleIngredients(event))}/></Form.Field></div>) : null}
               <button>Add Ingredient</button>
           </div>
             <br></br>
@@ -66,6 +76,7 @@ export default class TweakForm extends Component {
                 width={10}
                 rows={12}
                 name='steps'
+                onChange={(event) => {this.handleChange(event)}}
               /> )
               : null }
           </div>
@@ -77,6 +88,7 @@ export default class TweakForm extends Component {
             label='Special Instructions (e.g., substitution ideas, tips on a tricky part of the recipe)'
             width={10}
             name='notes'
+            onChange={(event) => {this.handleChange(event)}}
             />
           </div>
           <br></br>
