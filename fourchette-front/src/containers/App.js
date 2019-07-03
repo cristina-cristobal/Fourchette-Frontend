@@ -32,6 +32,7 @@ export default class App extends Component{
       .then(res => res.json())
       .then(user => {
         this.setState({
+          // currently only selects recipes for user at index 0. need to refactor
           mySavedRecipes: user[0].recipes
         })
       })
