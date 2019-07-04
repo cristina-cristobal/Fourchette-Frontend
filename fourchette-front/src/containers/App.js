@@ -108,7 +108,7 @@ export default class App extends Component{
             return( foundRecipe !== undefined ?
             <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes} like={this.like} tweakingRecipe={this.tweakingRecipe}/> : null
            )}} />
-           <Route exact path='/users' render={() => {return(<Profile myRecipes={this.state.myRecipes}/>)}} />
+           <Route exact path='/profile' render={() => {return(<Profile myRecipes={this.state.myRecipes}/>)}} />
         <Route exact path='/' render={() => {return (<Home recipes={this.state.allRecipes} />)}} />
       </Switch>
     </div>
