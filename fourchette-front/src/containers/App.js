@@ -16,8 +16,6 @@ export default class App extends Component{
       mySavedRecipes: [],
       myTweakedRecipes: [],
       myRecipes: [],
-
-
     }
   }
 
@@ -29,13 +27,16 @@ export default class App extends Component{
       allRecipes: recipesArray
     }))
 
-    fetch('http://localhost:3000/users')
+    fetch('http://localhost:3000/likes')
       .then(res => res.json())
-      .then(users => {
-        this.setState({
-          // currently only selects recipes for user at index 0. need to refactor
-          mySavedRecipes: users[0].recipes
-        })
+      .then(likes => {
+        // console.log(likes.filter(like => like.user.id === 1 ))
+        const userLikes = likes.filter(like => like.user.id === 1 )
+        console.log(userLikes.map(like => like.recipe))
+        // this.setState({
+        //   // currently only selects recipes for user at index 0. need to refactor
+        //   mySavedRecipes: users[0].recipes
+        // })
       })
 
       fetch('http://localhost:3000/recipes')
@@ -108,7 +109,7 @@ export default class App extends Component{
             <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes} like={this.like} tweakingRecipe={this.tweakingRecipe}/> : null
            )}} />
            <Route exact path='/users' render={() => {return(<Profile myRecipes={this.state.myRecipes}/>)}} />
-        <Route exact path='/' render={() => {return (<Home recipes={this.state.allRecipes} openRecipe={this.openRecipe}/>)}} />
+        <Route exact path='/' render={() => {return (<Home recipes={this.state.allRecipes} />)}} />
       </Switch>
     </div>
   )

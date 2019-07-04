@@ -7,7 +7,7 @@ export default class CardContainer extends Component {
     return(
       <div>
         <Card.Group itemsPerRow={4}>
-        {this.props.recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} openRecipe={this.props.openRecipe} />)}
+        {this.props.recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />)}
         </Card.Group>
       </div>
     )
