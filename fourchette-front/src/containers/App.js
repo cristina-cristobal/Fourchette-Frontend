@@ -31,12 +31,21 @@ export default class App extends Component{
 
     fetch('http://localhost:3000/users')
       .then(res => res.json())
-      .then(user => {
+      .then(users => {
         this.setState({
           // currently only selects recipes for user at index 0. need to refactor
-          mySavedRecipes: user[0].recipes
+          mySavedRecipes: users[0].recipes
         })
       })
+
+      fetch('http://localhost:3000/recipes')
+        .then(res => res.json())
+        .then(allRecipes => {
+          this.setState({
+            // currently only selects recipes for user at index 0. need to refactor
+            myRecipes: allRecipes.filter(recipe => recipe.user_id === 1)
+          })
+        })
 
   }
 
@@ -98,6 +107,7 @@ export default class App extends Component{
             return( foundRecipe !== undefined ?
             <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes} like={this.like} tweakingRecipe={this.tweakingRecipe}/> : null
            )}} />
+           <Route exact path='/users' render={() => {return(<Profile myRecipes={this.state.myRecipes}/>)}} />
         <Route exact path='/' render={() => {return (<Home recipes={this.state.allRecipes} openRecipe={this.openRecipe}/>)}} />
       </Switch>
     </div>

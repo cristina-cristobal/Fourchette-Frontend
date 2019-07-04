@@ -1,10 +1,14 @@
 import React, {Component} from 'react'
+import UserInfo from '../components/UserInfo'
+import UserCardContainer from '../components/UserCardContainer'
 
 export default class Profile extends Component {
   render(){
     return(
       <div>
       User Profile
+      <UserInfo />
+      <UserCardContainer myRecipes={this.props.myRecipes}/> 
       </div>
     )
   }

@@ -8,7 +8,8 @@ const RecipeCard = (props) => {
     <div onClick={() => {props.openRecipe(props.recipe)}}>
     <Card
     header={props.recipe.name}
-    description={props.recipe.user.full_name}/>
+    description={props.recipe.user.full_name}
+    />
     </div>
     </Link>
   )
