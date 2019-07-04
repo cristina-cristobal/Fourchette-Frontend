@@ -6,9 +6,8 @@ export default class Profile extends Component {
   render(){
     return(
       <div>
-      User Profile
-      <UserInfo />
-      <UserCardContainer myRecipes={this.props.myRecipes}/> 
+      <UserInfo userInfo={this.props.userInfo}/>
+      <UserCardContainer myRecipes={this.props.myRecipes}/>
       </div>
     )
   }

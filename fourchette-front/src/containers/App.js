@@ -16,6 +16,7 @@ export default class App extends Component{
       mySavedRecipes: [],
       myTweakedRecipes: [],
       myRecipes: [],
+      userInfo: []
     }
   }
 
@@ -48,6 +49,15 @@ export default class App extends Component{
           })
         })
 
+      fetch('http://localhost:3000/users')
+      .then(res => res.json())
+      .then (users => {
+        // console.log(users.find(user => user.id === 1))
+        // hardcoded user === 1
+        this.setState({
+          userInfo: users.find(user => user.id === 1)
+        })
+      })
   }
 
   tweakingRecipe = (recipe) => {
@@ -108,7 +118,7 @@ export default class App extends Component{
             return( foundRecipe !== undefined ?
             <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes} like={this.like} tweakingRecipe={this.tweakingRecipe}/> : null
            )}} />
-           <Route exact path='/profile' render={() => {return(<Profile myRecipes={this.state.myRecipes}/>)}} />
+           <Route exact path='/profile' render={() => {return(<Profile myRecipes={this.state.myRecipes} userInfo={this.state.userInfo}/>)}} />
         <Route exact path='/' render={() => {return (<Home recipes={this.state.allRecipes} />)}} />
       </Switch>
     </div>
