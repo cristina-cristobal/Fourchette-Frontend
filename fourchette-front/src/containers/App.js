@@ -35,7 +35,7 @@ export default class App extends Component{
         console.log(userLikes.map(like => like.recipe))
         this.setState({
           // currently only selects recipes for user at index 0. need to refactor
-          mySavedRecipes: userLikes.map(like => like.recipe)
+          mySavedRecipes: userLikes
         })
       })
 
@@ -104,7 +104,9 @@ export default class App extends Component{
             return( foundRecipe !== undefined ?
             <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes} like={this.like} /> : null
            )}} />
-           <Route exact path='/profile' render={() => {return(<Profile myRecipes={this.state.myRecipes} myTweakedRecipes={this.state.myTweakedRecipes}/>)}} />
+
+           <Route exact path='/profile' render={() => {return(<Profile myRecipes={this.state.myRecipes} myTweakedRecipes={this.state.myTweakedRecipes} mySavedRecipes={this.state.mySavedRecipes}/>)}} />
+
         <Route exact path='/' render={() => {return (<Home recipes={this.state.allRecipes} />)}} />
       </Switch>
     </div>

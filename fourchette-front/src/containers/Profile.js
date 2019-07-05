@@ -8,7 +8,7 @@ export default class Profile extends Component {
       <div>
       User Profile
       <UserInfo />
-      <UserCardContainer myRecipes={this.props.myRecipes} myTweakedRecipes={this.props.myTweakedRecipes}/>
+      <UserCardContainer myRecipes={this.props.myRecipes} myTweakedRecipes={this.props.myTweakedRecipes} mySavedRecipes={this.props.mySavedRecipes}/>
       </div>
     )
   }
