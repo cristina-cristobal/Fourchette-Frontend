@@ -44,17 +44,18 @@ export default class App extends Component{
         .then(allRecipes => {
           this.setState({
             // currently only selects recipes for user at index 0. need to refactor
-            myRecipes: allRecipes.filter(recipe => recipe.user_id === 1)
+            myRecipes: allRecipes.filter(recipe => recipe.user_id === 1 && recipe.copy === false),
+            myTweakedRecipes: allRecipes.filter(recipe => recipe.user_id === 1 && recipe.copy === true)
           })
         })
 
   }
-
-  tweakingRecipe = (recipe) => {
-    this.setState({
-      tweaking: [...this.state.tweaking, recipe]
-    })
-  }
+  //
+  // tweakingRecipe = (recipe) => {
+  //   this.setState({
+  //     tweaking: [...this.state.tweaking, recipe]
+  //   })
+  // }
 
   like = (recipe) => {
     let saveRecipe = {
@@ -106,9 +107,9 @@ export default class App extends Component{
             let recipeId = props.match.params.id
             let foundRecipe = this.state.allRecipes.find(r => r.id == recipeId)
             return( foundRecipe !== undefined ?
-            <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes} like={this.like} tweakingRecipe={this.tweakingRecipe}/> : null
+            <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes} like={this.like} /> : null
            )}} />
-           <Route exact path='/profile' render={() => {return(<Profile myRecipes={this.state.myRecipes}/>)}} />
+           <Route exact path='/profile' render={() => {return(<Profile myRecipes={this.state.myRecipes} myTweakedRecipes={this.state.myTweakedRecipes}/>)}} />
         <Route exact path='/' render={() => {return (<Home recipes={this.state.allRecipes} />)}} />
       </Switch>
     </div>
