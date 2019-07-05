@@ -33,10 +33,10 @@ export default class App extends Component{
         // console.log(likes.filter(like => like.user.id === 1 ))
         const userLikes = likes.filter(like => like.user.id === 1 )
         console.log(userLikes.map(like => like.recipe))
-        // this.setState({
-        //   // currently only selects recipes for user at index 0. need to refactor
-        //   mySavedRecipes: users[0].recipes
-        // })
+        this.setState({
+          // currently only selects recipes for user at index 0. need to refactor
+          mySavedRecipes: userLikes.map(like => like.recipe)
+        })
       })
 
       fetch('http://localhost:3000/recipes')
@@ -50,12 +50,7 @@ export default class App extends Component{
         })
 
   }
-  //
-  // tweakingRecipe = (recipe) => {
-  //   this.setState({
-  //     tweaking: [...this.state.tweaking, recipe]
-  //   })
-  // }
+
 
   like = (recipe) => {
     let saveRecipe = {
@@ -116,16 +111,3 @@ export default class App extends Component{
   )
 }
 }
-// <Route exact path='/users/:id' render={() => {return(<Profile /> ) }} />
-          //
-          // <Recipe clickedRecipe={this.state.allRecipes.find(r => r.id === recipeId)} allRecipes={this.state.allRecipes}/>)}}/>
-
-
-          // <Route exact path='/recipes/:id' render={(props) => {
-          //   let recipeId = props.match.params.id
-          //   return( (this.state.allRecipes.find(r => r.id === recipeId)) != undefined) ?
-          //
-          //   <Recipe clickedRecipe={this.state.allRecipes.find(r => r.id === recipeId)} allRecipes={this.state.allRecipes}/> : null
-          // )}}
-          //
-          // />

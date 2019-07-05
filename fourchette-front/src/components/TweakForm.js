@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { Button, Checkbox, Form, TextArea, Text } from 'semantic-ui-react'
+import IngredientField from './IngredientField'
 
 export default class TweakForm extends Component {
   constructor(){
@@ -58,15 +59,11 @@ export default class TweakForm extends Component {
           </div>
 
             <br></br>
-
           <div>
-            <b>Ingredients</b>
-              {(this.props.recipe.ingredients) ? this.props.recipe.ingredients.map((ingredient) => <div>
-                <Form.Field width={6}> <input placeholder={ingredient.description}
-                name='ingredients'
-                onChange={(event) => (this.handleIngredients(event))}/></Form.Field></div>) : null}
-              <button>Add Ingredient</button>
+          <b>Ingredients</b>
+          {this.props.recipe.ingredients.map(ingredient => <IngredientField key={ingredient.id} ingredient={ingredient} handleIngredient={this.handleIngredients}/>)}
           </div>
+
             <br></br>
           <div>
             {(this.props.recipe.steps) ? (<Form.Field
@@ -101,18 +98,15 @@ export default class TweakForm extends Component {
   }
 }
 
-//
-// {(this.props.recipe.intro === null) ?
-//
-//     <Form.Field
-//     placeholder='Place intro here'
-//     control={TextArea}
-//     label='Introduction: Tell us about your recipe. What did you Tweak? What '
-//     />
-//   :
-//   <Form.Field
-//   placeholder={this.props.recipe.intro}
-//   control={TextArea}
-//   label='Intro'
-//   />
-// }
+
+
+// <div>
+// <b>Ingredients</b>
+// {(this.props.recipe.ingredients) ? this.props.recipe.ingredients.map((ingredient) => <div>
+//   <Form.Field width={6}> <input placeholder={ingredient.description}
+//   name='ingredients'
+//   key={ingredient.id}
+//   onChange={(event) =>  {
+//     (this.handleIngredients(event))}} /></Form.Field></div>) : null}
+//     <button>Add Ingredient</button>
+//     </div>
