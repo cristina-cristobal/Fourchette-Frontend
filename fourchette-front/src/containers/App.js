@@ -32,7 +32,7 @@ export default class App extends Component{
       .then(likes => {
         // console.log(likes.filter(like => like.user.id === 1 ))
         const userLikes = likes.filter(like => like.user.id === 1 )
-        console.log(userLikes.map(like => like.recipe))
+        // console.log(userLikes.map(like => like.recipe))
         this.setState({
           // currently only selects recipes for user at index 0. need to refactor
           mySavedRecipes: userLikes

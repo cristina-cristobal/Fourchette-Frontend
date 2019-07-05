@@ -3,14 +3,14 @@ import { Button, Checkbox, Form, TextArea, Text } from 'semantic-ui-react'
 import IngredientField from './IngredientField'
 
 export default class TweakForm extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
-      name: '',
-      intro: '',
-      steps: '',
-      notes: '',
-      ingredients: []
+      name: props.recipe.name,
+      intro: props.recipe.intro,
+      steps: props.recipe.steps,
+      notes: props.recipe.notes,
+      ingredients: props.recipe.ingredients
     }
   }
 
@@ -21,12 +21,18 @@ export default class TweakForm extends Component {
     })
   }
 
-  handleIngredients = (event) => {
-    console.log('event.target.name', event.target.name, ". event.target.value", event.target.value)
-    this.setState({
-      // currently this will add each new character on change to state... need to only push finalized value
-      ingredients: [...this.state.ingredients, event.target.value]
-    })
+
+
+
+  handleIngredients = (event, ingredient) => {
+    console.log(event.target.value)
+    // this.setState({
+    //   // currently this will add each new character on change to state... need to only push finalized value
+    //   // ingredients: [...this.state.ingredients, event.target.value]
+    //   // ingredients: [...this.state.ingredients.find(ing => {ing.id === ingredient.id})]
+    //   ingredients: copyOfIngredeitnsWithOneIngredientChanged
+    //
+    // })
   }
 
   render(){
@@ -40,7 +46,7 @@ export default class TweakForm extends Component {
           <div>
             <Form.Input
             label='Name'
-            placeholder={this.props.recipe.name}
+            value={this.state.name}
             width={10}
             name='name'
             onChange={(event) => {this.handleChange(event)}}
@@ -49,7 +55,7 @@ export default class TweakForm extends Component {
           <br></br>
           <div>
             <Form.Field
-            placeholder={this.props.recipe.intro}
+            value={this.state.intro}
             control={TextArea}
             label='Introduction. Tell us about your recipe. What did you tweak? What did you serve it with?'
             width={10}
@@ -61,7 +67,9 @@ export default class TweakForm extends Component {
             <br></br>
           <div>
           <b>Ingredients</b>
-          {this.props.recipe.ingredients.map(ingredient => <IngredientField key={ingredient.id} ingredient={ingredient} handleIngredient={this.handleIngredients}/>)}
+          {
+            this.state.ingredients.map(ingredient => <IngredientField key={ingredient.id} ingredient={ingredient} handleIngredient={this.handleIngredients}/>)
+          }
           </div>
 
             <br></br>
@@ -69,7 +77,7 @@ export default class TweakForm extends Component {
             {(this.props.recipe.steps) ? (<Form.Field
                 control={TextArea}
                 label='Steps'
-                placeholder={this.props.recipe.steps}
+                value={this.state.steps}
                 width={10}
                 rows={12}
                 name='steps'
@@ -80,7 +88,7 @@ export default class TweakForm extends Component {
           <br></br>
           <div>
             <Form.Field
-            placeholder={this.props.recipe.notes}
+            value={this.state.notes}
             control={TextArea}
             label='Special Instructions (e.g., substitution ideas, tips on a tricky part of the recipe)'
             width={10}
