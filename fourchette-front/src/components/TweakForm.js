@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Button, Checkbox, Form, TextArea, Text } from 'semantic-ui-react'
+import { Form, TextArea } from 'semantic-ui-react'
 import IngredientField from './IngredientField'
 
 export default class TweakForm extends Component {
@@ -25,7 +25,39 @@ export default class TweakForm extends Component {
 
 
   handleIngredients = (event, ingredient) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
+    // let ing52 = this.state.ingredients.find(ing => ing.id === 52)
+    // console.log(this.state.ingredients.find(ing => ing.id === 52))
+
+    // console.log(p.replace(regex, 'ferret'));
+
+    // console.log(this.state.ingredients.replace(ing52, 'something'))
+
+    // find index, slice/splice, and replace with event.target.value
+
+    let ingCopy = [...this.state.ingredients]
+
+    let ingIndex = this.state.ingredients.findIndex(ing => ing.id === 52)
+
+    let testingSplice = ingCopy.splice(ingIndex, 1, event.target.value)
+
+    // console.log('testingSplice', testingSplice)
+
+    console.log(ingCopy)
+
+    this.setState({
+      ingredients: ingCopy
+    })
+
+    // this.setState({
+    //   ingredients: ingCopy.splice(ingIndex, 1, event.target.value)
+    // })
+
+
+    // console.log(this.props)
+
+    // if field ID === ingredient ID, then change the ingredient in the ingredient array
+
     // this.setState({
     //   // currently this will add each new character on change to state... need to only push finalized value
     //   // ingredients: [...this.state.ingredients, event.target.value]

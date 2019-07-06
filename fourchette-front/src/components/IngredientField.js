@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Button, Checkbox, Form, TextArea, Text } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 
 export default class IngredientField extends Component{
   render(){
