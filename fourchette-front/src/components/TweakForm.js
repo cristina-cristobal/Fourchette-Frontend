@@ -45,11 +45,13 @@ export default class TweakForm extends Component {
   //
   // console.log('this.state.newObj:',this.state.newObj)
 
-  // ingCopy.splice(ingIndex , 1, ingObj)
+  ingCopy.splice(ingIndex , 1, this.state.newObj)
+
+  console.log('ingCopy:', ingCopy)
   //
-  // this.setState({
-  //   ingredients: ingCopy
-  // })
+  this.setState({
+    ingredients: ingCopy
+  })
 
   }
 
