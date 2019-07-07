@@ -10,7 +10,9 @@ export default class TweakForm extends Component {
       intro: props.recipe.intro,
       steps: props.recipe.steps,
       notes: props.recipe.notes,
-      ingredients: props.recipe.ingredients
+      ingredients: props.recipe.ingredients,
+      ingDescription: '',
+      newObj: ''
     }
   }
 
@@ -21,51 +23,74 @@ export default class TweakForm extends Component {
     })
   }
 
-
-
-
   handleIngredients = (event, ingredient) => {
-    // console.log(event.target.value)
-    // let ing52 = this.state.ingredients.find(ing => ing.id === 52)
-    // console.log(this.state.ingredients.find(ing => ing.id === 52))
-
-    // console.log(p.replace(regex, 'ferret'));
-
-    // console.log(this.state.ingredients.replace(ing52, 'something'))
-
-    // find index, slice/splice, and replace with event.target.value
-
     let ingCopy = [...this.state.ingredients]
-
     let ingIndex = this.state.ingredients.findIndex(ing => ing.id === 52)
-
     let testingSplice = ingCopy.splice(ingIndex, 1, event.target.value)
-
-    // console.log('testingSplice', testingSplice)
-
     console.log(ingCopy)
-
     this.setState({
-      ingredients: ingCopy
+      ingredients: ingCopy,
+      ingDescription: event.target.value
     })
 
-    // this.setState({
-    //   ingredients: ingCopy.splice(ingIndex, 1, event.target.value)
-    // })
+  let ingObj = {id: 500, recipe_id: 500, description: ''}
 
+  ingObj.description = this.state.ingDescription
 
-    // console.log(this.props)
+  console.log("ingObj:", ingObj)
 
-    // if field ID === ingredient ID, then change the ingredient in the ingredient array
+  this.setState({
+    newObj: ingObj
+  })
+  //
+  // console.log('this.state.newObj:',this.state.newObj)
 
-    // this.setState({
-    //   // currently this will add each new character on change to state... need to only push finalized value
-    //   // ingredients: [...this.state.ingredients, event.target.value]
-    //   // ingredients: [...this.state.ingredients.find(ing => {ing.id === ingredient.id})]
-    //   ingredients: copyOfIngredeitnsWithOneIngredientChanged
-    //
-    // })
+  // ingCopy.splice(ingIndex , 1, ingObj)
+  //
+  // this.setState({
+  //   ingredients: ingCopy
+  // })
+
   }
+
+
+
+
+
+
+
+  // handleIngredients = (event, ingredient) => {
+  //
+  //   // find index, slice/splice, and replace with event.target.value
+  //
+  //   let ingCopy = [...this.state.ingredients]
+  //
+  //   let ingIndex = this.state.ingredients.findIndex(ing => ing.id === 53)
+  //
+  //   let newIng = {id: 0, recipe_id: 0, description: ''}
+  //
+  //   let testingSplice = ingCopy.splice(ingIndex, 1, newIng.description = 'test')
+  //
+  //   this.setState({
+  //     ingredients: ingCopy
+  //   })
+  //
+  //   console.log('testingSplice:', testingSplice)
+  //
+  //   console.log('ingCopy:', ingCopy)
+  //
+  //
+  //
+  //   // if field ID === ingredient ID, then change the ingredient in the ingredient array
+  //
+  //   // this.setState({
+  //   //   // currently this will add each new character on change to state... need to only push finalized value
+  //   //   // ingredients: [...this.state.ingredients, event.target.value]
+  //   //   // ingredients: [...this.state.ingredients.find(ing => {ing.id === ingredient.id})]
+  //   //   ingredients: copyOfIngredeitnsWithOneIngredientChanged
+  //   //
+  //   // })
+  // }
 
   render(){
     return(
