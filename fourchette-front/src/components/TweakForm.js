@@ -23,8 +23,10 @@ export default class TweakForm extends Component {
     })
   }
 
-  handleIngredients = (event, ingredient) => {
+  handleIngredients = (event, ingre) => {
     let ingCopy = [...this.state.ingredients]
+    // ingredient.id === 52 is '11-12 graham crackers' for watermelon feta cheesecake
+    // going to set findIndex value to 'event.target.dataset.id' and it may break subsequent code. Saving while working
     let ingIndex = this.state.ingredients.findIndex(ing => ing.id === 52)
     let testingSplice = ingCopy.splice(ingIndex, 1, event.target.value)
     console.log(ingCopy)
@@ -32,6 +34,8 @@ export default class TweakForm extends Component {
       ingredients: ingCopy,
       ingDescription: event.target.value
     })
+
+    console.log("event.target:", event.target.dataset.id)
 
   let ingObj = {id: 500, recipe_id: 500, description: ''}
 
