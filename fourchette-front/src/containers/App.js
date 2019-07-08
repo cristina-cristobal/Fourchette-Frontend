@@ -58,6 +58,12 @@ export default class App extends Component{
 
   }
 
+  addingTweak = (tweaking) =>{
+    console.log(tweaking)
+    // this.setState({
+    //   allRecipes: [...this.state.allRecipes, tweaking]
+    // })
+  }
 
   like = (recipe) => {
     let saveRecipe = {
@@ -101,7 +107,7 @@ export default class App extends Component{
       <Route exact path='/recipes/:id/edit' render={(props) => {
         let recipeId = props.match.params.id
         let foundRecipe = this.state.allRecipes.find(r => r.id == recipeId)
-          return ( foundRecipe !== undefined ?
+          return ( foundRecipe ?
             <EditRecipe recipe={foundRecipe} tweakPost={this.tweakPost} allIngredients={this.state.allIngredients}/> : null
           )
         }}/>
@@ -109,7 +115,7 @@ export default class App extends Component{
             let recipeId = props.match.params.id
             let foundRecipe = this.state.allRecipes.find(r => r.id == recipeId)
             return( foundRecipe !== undefined ?
-            <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes} like={this.like} /> : null
+            <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes} like={this.like} addingTweak={this.addingTweak}/> : null
            )}} />
 
            <Route exact path='/profile' render={() => {return(<Profile myRecipes={this.state.myRecipes} myTweakedRecipes={this.state.myTweakedRecipes} mySavedRecipes={this.state.mySavedRecipes}/>)}} />

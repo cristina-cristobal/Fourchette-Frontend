@@ -6,7 +6,8 @@ export default class Steps extends Component {
     super(props)
     this.state = {
       toTweak: null,
-      ingredients: props.recipe.ingredients.map(ingredient => ingredient.description)
+      ingredients: props.recipe.ingredients.map(ingredient => ingredient.description),
+      redirect: false
     }
   }
 
@@ -40,7 +41,9 @@ export default class Steps extends Component {
     .then(newRecipe => {
       this.setState({
         toTweak: newRecipe
-      })
+      },
+      () => {this.props.addingTweak(this.state.toTweak)}
+    )
 
       fetch('http://localhost:3000/ingredients', {
         method: "POST",
@@ -57,11 +60,20 @@ export default class Steps extends Component {
   )
   }
 
+  // tweakRunner = (tweaking) => {
+  //   debugger
+  //   this.postTweak()
+  //   this.setState({
+  //     redirect: true
+  //   })
+  //   () => {this.props.addingTweak(tweaking)}
+  // }
+
 
   render(){
     return(
       <div>
-        {this.state.toTweak ?
+        {this.state.redirect && this.state.toTweak ?
           <Redirect to={`/recipes/${this.state.toTweak.id}/edit`} /> : null}
       Steps------------------------------
         {(this.props.recipe.steps) ? this.props.recipe.steps : null}
