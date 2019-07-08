@@ -12,7 +12,8 @@ export default class TweakForm extends Component {
       notes: props.recipe.notes,
       ingredients: props.recipe.ingredients,
       ingDescription: '',
-      newObj: ''
+      newObj: '',
+      allIngredients: props.allIngredients
     }
   }
 
@@ -25,28 +26,41 @@ export default class TweakForm extends Component {
 
   handleIngredients = (event, ingre) => {
     let ingCopy = [...this.state.ingredients]
-    // ingredient.id === 52 is '11-12 graham crackers' for watermelon feta cheesecake
-    // going to set findIndex value to 'event.target.dataset.id' and it may break subsequent code. Saving while working
+    //
+    // let lastIngId = this.state.allIngredients[this.state.allIngredients.length -1].id
+    //
+    // let ingObj = {id: ++lastIngId}
+    //
+    // ingObj.description = this.state.ingDescription
+
     let ingIndex = this.state.ingredients.findIndex(ing => ing.id == event.target.dataset.id)
-    // console.log(event.target.dataset.id)
-    console.log("ingIndex:", ingIndex)
+
+    console.log(ingIndex)
+
+
     let testingSplice = ingCopy.splice(ingIndex, 1, event.target.value)
-    // console.log(ingCopy)
+
     this.setState({
       ingredients: ingCopy,
       ingDescription: event.target.value
     })
+    //
+    // console.log("ingObj:", ingObj)
+    //
+    // let secondSplice = ingCopy.splice(ingIndex, 1, ingObj)
+    //
+    // console.log("ingCopy:", ingCopy)
 
+    // this.setState({
+    //   ingredients: ingObj
+    // })
 
 
     // this.setState({
     //   ingredients: ingCopy
     // })
-  // let ingObj = {id: 500, recipe_id: 500, description: ''}
 
-  // let ingObj = {description: ''}
   //
-  // ingObj.description = this.state.ingDescription
   //
   // console.log("ingObj:", ingObj)
   //

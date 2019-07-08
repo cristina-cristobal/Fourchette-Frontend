@@ -16,10 +16,17 @@ export default class App extends Component{
       mySavedRecipes: [],
       myTweakedRecipes: [],
       myRecipes: [],
+      allIngredients: []
     }
   }
 
   componentDidMount(){
+
+    fetch('http://localhost:3000/ingredients')
+    .then(res => res.json())
+    .then(ingredientsArr => this.setState({
+      allIngredients: ingredientsArr
+    }))
 
     fetch('http://localhost:3000/recipes')
     .then(res => res.json())
@@ -95,7 +102,7 @@ export default class App extends Component{
         let recipeId = props.match.params.id
         let foundRecipe = this.state.allRecipes.find(r => r.id == recipeId)
           return ( foundRecipe !== undefined ?
-            <EditRecipe recipe={foundRecipe} tweakPost={this.tweakPost}/> : null
+            <EditRecipe recipe={foundRecipe} tweakPost={this.tweakPost} allIngredients={this.state.allIngredients}/> : null
           )
         }}/>
           <Route exact path='/recipes/:id' render={(props) => {
