@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 
 export default class Steps extends Component {
   constructor(props){
     super(props)
     this.state = {
-      toTweak: [],
-      ingredients: props.recipe.ingredients.map(ingredient => ingredient.description),
+      toTweak: null,
+      ingredients: props.recipe.ingredients.map(ingredient => ingredient.description)
     }
   }
 
@@ -53,27 +53,21 @@ export default class Steps extends Component {
           createdRecipe: newRecipe
         })
       })
-
     }
-
   )
-
-
-    console.log('posting now')
-
   }
+
 
   render(){
     return(
       <div>
-      {console.log(this.props.recipe.name)}
+        {this.state.toTweak ?
+          <Redirect to={`/recipes/${this.state.toTweak.id}/edit`} /> : null}
       Steps------------------------------
         {(this.props.recipe.steps) ? this.props.recipe.steps : null}
         ---------------------------------
         <div>
-        {/*<Link to={`/recipes/${this.state.toTweak.id}/edit`}>*/}
         <button onClick={(() => {this.postTweak()})}>Tweak</button>
-        {/*</Link>*/}
         <button onClick={() => {this.props.like(this.props.recipe)}}>Save</button>
         </div>
       </div>
