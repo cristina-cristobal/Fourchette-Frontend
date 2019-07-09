@@ -61,14 +61,6 @@ export default class Steps extends Component {
   )
   }
 
-  // tweakRunner = (tweaking) => {
-  //   debugger
-  //   this.postTweak()
-  //   this.setState({
-  //     redirect: true
-  //   })
-  //   () => {this.props.addingTweak(tweaking)}
-  // }
 
   saveAndRedirect = (recipe) => {
     this.props.like(recipe)
