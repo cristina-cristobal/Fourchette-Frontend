@@ -8,8 +8,7 @@ export default class Steps extends Component {
       toTweak: null,
       ingredients: props.recipe.ingredients.map(ingredient => ingredient.description),
       redirect: false,
-      saveClicked: false,
-      ingAdded: null
+      saveClicked: false
     }
   }
 
@@ -24,7 +23,6 @@ export default class Steps extends Component {
       intro: this.props.recipe.intro,
       notes: this.props.recipe.notes,
       steps: this.props.recipe.steps,
-      ingredients: this.state.ingredients
     }
 
     let ingredientList = {
@@ -42,36 +40,29 @@ export default class Steps extends Component {
 
     .then(res => res.json())
     .then(newRecipe => {
-      this.setState({
-        toTweak: newRecipe
-      },
-      () => {this.props.addingTweak(this.state.toTweak)}
-    )
 
-    //   fetch('http://localhost:3000/ingredients', {
-    //     method: "POST",
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'Accept': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       ingredients: this.state.ingredients,
-    //       createdRecipe: newRecipe
-    //     })
-    //   })
-    //   .then(res => res.json())
-    //   .then(ings => {
-    //     this.setState({
-    //       toTweak: newRecipe,
-    //       ingAdded: ings
-    //     },
-    //   )
-    //   })
-
+      fetch('http://localhost:3000/ingredients', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          ingredients: this.state.ingredients,
+          createdRecipe: newRecipe
+        })
+      })
+      .then(res => res.json())
+      .then(ings => {
+        this.setState({
+          toTweak: newRecipe
+        },
+        () => {this.props.addingTweak(this.state.toTweak)}
+      )
+      })
     }
   )
   }
-
 
 
   saveAndRedirect = (recipe) => {
@@ -94,7 +85,7 @@ export default class Steps extends Component {
         <div>
         <button onClick={(() => {this.postTweak()})}>Tweak</button>
         <button onClick={() => {this.saveAndRedirect(this.props.recipe)}}>Save</button>
-        {this.state.saveClicked ? <Redirect to={'/profile'} /> : null}
+        {this.props.newlySaved ? <Redirect to={'/profile'} /> : null}
         </div>
       </div>
     )
