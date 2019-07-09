@@ -13,7 +13,7 @@ const SavedRecipeCard = (props) => {
         description={props.recipe.user.full_name}
         />
         </div>
-        </Link> 
+        </Link>
         </div>
   )
 }
