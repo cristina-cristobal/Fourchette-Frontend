@@ -16,24 +16,11 @@ export default class App extends Component{
       mySavedRecipes: [],
       myTweakedRecipes: [],
       myRecipes: [],
-      allIngredients: [],
       newlySaved: null
     }
   }
 
   componentDidMount(){
-
-    fetch('http://localhost:3000/ingredients')
-    .then(res => res.json())
-    .then(ingredientsArr => this.setState({
-      allIngredients: ingredientsArr
-    }))
-
-    fetch('http://localhost:3000/recipes')
-    .then(res => res.json())
-    .then(recipesArray => this.setState({
-      allRecipes: recipesArray
-    }))
 
     fetch('http://localhost:3000/likes')
       .then(res => res.json())
@@ -53,7 +40,8 @@ export default class App extends Component{
           this.setState({
             // currently only selects recipes for user at index 0. need to refactor
             myRecipes: allRecipes.filter(recipe => recipe.user_id === 1 && recipe.copy === false),
-            myTweakedRecipes: allRecipes.filter(recipe => recipe.user_id === 1 && recipe.copy === true)
+            myTweakedRecipes: allRecipes.filter(recipe => recipe.user_id === 1 && recipe.copy === true),
+            allRecipes: allRecipes
           })
         })
 
@@ -112,7 +100,7 @@ export default class App extends Component{
         let recipeId = props.match.params.id
         let foundRecipe = this.state.allRecipes.find(r => r.id == recipeId)
           return (
-            <EditRecipe recipe={foundRecipe} tweakPost={this.tweakPost} allIngredients={this.state.allIngredients}/>
+            <EditRecipe recipe={foundRecipe} tweakPost={this.tweakPost} />
           )
         }}/>
           <Route exact path='/recipes/:id' render={(props) => {
