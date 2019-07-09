@@ -94,7 +94,7 @@ export default class Steps extends Component {
         <div>
         <button onClick={(() => {this.postTweak()})}>Tweak</button>
         <button onClick={() => {this.saveAndRedirect(this.props.recipe)}}>Save</button>
-        {this.props.newlySaved ? <Redirect to={'/profile'} /> : null}
+        {this.state.saveClicked ? <Redirect to={'/profile'} /> : null}
         </div>
       </div>
     )
