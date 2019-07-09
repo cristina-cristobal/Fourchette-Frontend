@@ -73,7 +73,7 @@ export default class Steps extends Component {
   render(){
     return(
       <div>
-        {this.state.redirect && this.state.toTweak ?
+        {this.state.toTweak ?
           <Redirect to={`/recipes/${this.state.toTweak.id}/edit`} /> : null}
       Steps------------------------------
         {(this.props.recipe.steps) ? this.props.recipe.steps : null}

@@ -11,9 +11,6 @@ export default class TweakForm extends Component {
       steps: props.recipe.steps,
       notes: props.recipe.notes,
       ingredients: props.recipe.ingredients,
-      ingDescription: '',
-      newObj: '',
-      allIngredients: props.allIngredients
     }
   }
 
@@ -26,98 +23,22 @@ export default class TweakForm extends Component {
 
   handleIngredients = (event, ingre) => {
     let ingCopy = [...this.state.ingredients]
-    //
-    // let lastIngId = this.state.allIngredients[this.state.allIngredients.length -1].id
-    //
-    // let ingObj = {id: ++lastIngId}
-    //
-    // ingObj.description = this.state.ingDescription
 
     let ingIndex = this.state.ingredients.findIndex(ing => ing.id == event.target.dataset.id)
 
     console.log(ingIndex)
 
+    let foundIng = this.state.ingredients[ingIndex]
 
-    let testingSplice = ingCopy.splice(ingIndex, 1, event.target.value)
+    foundIng.description = event.target.value
+
+    ingCopy.splice(ingIndex, 1, foundIng)
 
     this.setState({
       ingredients: ingCopy,
-      ingDescription: event.target.value
     })
-    //
-    // console.log("ingObj:", ingObj)
-    //
-    // let secondSplice = ingCopy.splice(ingIndex, 1, ingObj)
-    //
-    // console.log("ingCopy:", ingCopy)
-
-    // this.setState({
-    //   ingredients: ingObj
-    // })
-
-
-    // this.setState({
-    //   ingredients: ingCopy
-    // })
-
-  //
-  //
-  // console.log("ingObj:", ingObj)
-  //
-  // this.setState({
-  //   newObj: ingObj
-  // })
-  // //
-  // // console.log('this.state.newObj:',this.state.newObj)
-  //
-  // ingCopy.splice(ingIndex , 1, this.state.newObj)
-  //
-  // console.log('ingCopy:', ingCopy)
-  // //
-  // this.setState({
-  //   ingredients: ingCopy
-  // })
-  //
   }
 
-
-
-
-
-
-
-  // handleIngredients = (event, ingredient) => {
-  //
-  //   // find index, slice/splice, and replace with event.target.value
-  //
-  //   let ingCopy = [...this.state.ingredients]
-  //
-  //   let ingIndex = this.state.ingredients.findIndex(ing => ing.id === 53)
-  //
-  //   let newIng = {id: 0, recipe_id: 0, description: ''}
-  //
-  //   let testingSplice = ingCopy.splice(ingIndex, 1, newIng.description = 'test')
-  //
-  //   this.setState({
-  //     ingredients: ingCopy
-  //   })
-  //
-  //   console.log('testingSplice:', testingSplice)
-  //
-  //   console.log('ingCopy:', ingCopy)
-  //
-  //
-  //
-  //   // if field ID === ingredient ID, then change the ingredient in the ingredient array
-  //
-  //   // this.setState({
-  //   //   // currently this will add each new character on change to state... need to only push finalized value
-  //   //   // ingredients: [...this.state.ingredients, event.target.value]
-  //   //   // ingredients: [...this.state.ingredients.find(ing => {ing.id === ingredient.id})]
-  //   //   ingredients: copyOfIngredeitnsWithOneIngredientChanged
-  //   //
-  //   // })
-  // }
 
   render(){
     return(
