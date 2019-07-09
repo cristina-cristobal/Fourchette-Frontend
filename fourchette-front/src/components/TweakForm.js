@@ -13,7 +13,6 @@ export default class TweakForm extends Component {
       steps: props.recipe.steps,
       notes: props.recipe.notes,
       ingredients: props.recipe.ingredients,
-      submitClicked: false,
       image: props.recipe.image,
       updatedRecipe: null
     }
@@ -64,7 +63,6 @@ export default class TweakForm extends Component {
     .then(res => res.json())
     .then(adaptedRecipe => {this.setState({
       updatedRecipe: adaptedRecipe,
-      submitClicked: true
 
     })})
 
@@ -136,8 +134,8 @@ export default class TweakForm extends Component {
           <Form.Button onClick={this.patchRecipe}>Submit</Form.Button>
           </div>
         </Form>
-        {this.state.submitClicked && this.state.updatedRecipe ?
-          <Redirect to={`/recipes/${this.state.id + 1}`} /> : null
+        {this.state.updatedRecipe ?
+          <Redirect to={`/recipes/${this.state.id}`} /> : null
         }
       </div>
     )
