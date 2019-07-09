@@ -1,21 +1,25 @@
 import React, {Component} from 'react'
 import { Form, TextArea } from 'semantic-ui-react'
 import IngredientField from './IngredientField'
+import {Redirect} from 'react-router-dom'
 
 export default class TweakForm extends Component {
   constructor(props){
     super(props)
     this.state = {
+      id: props.recipe.id,
       name: props.recipe.name,
       intro: props.recipe.intro,
       steps: props.recipe.steps,
       notes: props.recipe.notes,
       ingredients: props.recipe.ingredients,
+      submitClicked: false,
+      image: props.recipe.image,
+      updatedRecipe: null
     }
   }
 
   handleChange = (event) => {
-    console.log("event.target.name:", event.target.name, ". event.target.value:", event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -25,8 +29,6 @@ export default class TweakForm extends Component {
     let ingCopy = [...this.state.ingredients]
 
     let ingIndex = this.state.ingredients.findIndex(ing => ing.id == event.target.dataset.id)
-
-    console.log(ingIndex)
 
     let foundIng = this.state.ingredients[ingIndex]
 
@@ -39,6 +41,34 @@ export default class TweakForm extends Component {
     })
   }
 
+  patchRecipe = () => {
+    let patchedRecipe = {
+      id: this.state.id,
+      name: this.state.name,
+      intro: this.state.intro,
+      steps: this.state.steps,
+      notes: this.state.notes,
+      user_id: 1,
+      prev_recipe_id: this.props.recipe.id,
+      image: this.state.image
+    }
+
+    fetch(`http://localhost:3000/recipes/${this.state.id}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(patchedRecipe)
+    })
+    .then(res => res.json())
+    .then(adaptedRecipe => {this.setState({
+      updatedRecipe: adaptedRecipe,
+      submitClicked: true
+
+    })})
+
+  }
 
   render(){
     return(
@@ -103,23 +133,13 @@ export default class TweakForm extends Component {
           </div>
           <br></br>
           <div>
-          <Form.Button onClick={this.props.tweakPost}>Submit</Form.Button>
+          <Form.Button onClick={this.patchRecipe}>Submit</Form.Button>
           </div>
         </Form>
+        {this.state.submitClicked && this.state.updatedRecipe ?
+          <Redirect to={`/recipes/${this.state.id + 1}`} /> : null
+        }
       </div>
     )
   }
 }
-
-
-
-// <div>
-// <b>Ingredients</b>
-// {(this.props.recipe.ingredients) ? this.props.recipe.ingredients.map((ingredient) => <div>
-//   <Form.Field width={6}> <input placeholder={ingredient.description}
-//   name='ingredients'
-//   key={ingredient.id}
-//   onChange={(event) =>  {
-//     (this.handleIngredients(event))}} /></Form.Field></div>) : null}
-//     <button>Add Ingredient</button>
-//     </div>

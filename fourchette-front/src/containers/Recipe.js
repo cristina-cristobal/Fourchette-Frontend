@@ -8,7 +8,6 @@ export default class RecipeBody extends Component {
   render(){
     return(
       <div>
-        Recipe Page
         <Summary recipe={this.props.clickedRecipe}/>
         <Ingredients recipe={this.props.clickedRecipe}/>
         <Steps recipe={this.props.clickedRecipe} like={this.props.like} allRecipes={this.props.allRecipes} addingTweak={this.props.addingTweak}/>
