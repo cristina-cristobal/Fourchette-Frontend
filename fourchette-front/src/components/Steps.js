@@ -7,7 +7,8 @@ export default class Steps extends Component {
     this.state = {
       toTweak: null,
       ingredients: props.recipe.ingredients.map(ingredient => ingredient.description),
-      redirect: false
+      redirect: false,
+      saveClicked: false
     }
   }
 
@@ -69,6 +70,13 @@ export default class Steps extends Component {
   //   () => {this.props.addingTweak(tweaking)}
   // }
 
+  saveAndRedirect = (recipe) => {
+    this.props.like(recipe)
+    this.setState({
+      saveClicked: true
+    })
+  }
+
 
   render(){
     return(
@@ -80,7 +88,8 @@ export default class Steps extends Component {
         ---------------------------------
         <div>
         <button onClick={(() => {this.postTweak()})}>Tweak</button>
-        <button onClick={() => {this.props.like(this.props.recipe)}}>Save</button>
+        <button onClick={() => {this.saveAndRedirect(this.props.recipe)}}>Save</button>
+        {this.state.saveClicked ? <Redirect to={'/profile'} /> : null}
         </div>
       </div>
     )

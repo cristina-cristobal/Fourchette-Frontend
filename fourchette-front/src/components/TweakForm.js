@@ -64,8 +64,21 @@ export default class TweakForm extends Component {
     .then(adaptedRecipe => {this.setState({
       updatedRecipe: adaptedRecipe,
 
-    })})
+    })
 
+    fetch('http://localhost:3000/updatedingredients', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        recipe_id: adaptedRecipe.id,
+        ingredients: this.state.ingredients
+      })
+    })
+  }
+  )
   }
 
   render(){

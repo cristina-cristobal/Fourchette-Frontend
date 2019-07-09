@@ -16,7 +16,8 @@ export default class App extends Component{
       mySavedRecipes: [],
       myTweakedRecipes: [],
       myRecipes: [],
-      allIngredients: []
+      allIngredients: [],
+      newlySaved: null
     }
   }
 
@@ -82,7 +83,8 @@ export default class App extends Component{
     })
       .then(res => res.json())
       .then(newlySaved => { this.setState({
-        mySavedRecipes: [...this.state.mySavedRecipes, recipe]
+        mySavedRecipes: [...this.state.mySavedRecipes, recipe],
+        newlySaved: true
       })
       })
 
@@ -118,7 +120,8 @@ export default class App extends Component{
             <Recipe clickedRecipe={foundRecipe} allRecipes={this.state.allRecipes} like={this.like} addingTweak={this.addingTweak}/> : null
            )}} />
 
-           <Route exact path='/profile' render={() => {return(<Profile myRecipes={this.state.myRecipes} myTweakedRecipes={this.state.myTweakedRecipes} mySavedRecipes={this.state.mySavedRecipes}/>)}} />
+           <Route exact path='/profile' render={() => {return(<Profile myRecipes={this.state.myRecipes} myTweakedRecipes={this.state.myTweakedRecipes} mySavedRecipes={this.state.mySavedRecipes}
+             newlySaved={this.state.newlySaved}/>)}} />
 
         <Route exact path='/' render={() => {return (<Home recipes={this.state.allRecipes} />)}} />
       </Switch>

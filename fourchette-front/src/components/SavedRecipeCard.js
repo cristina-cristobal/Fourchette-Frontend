@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 
 const SavedRecipeCard = (props) => {
   return (
+    <div>
+  { props.recipe.recipe.id ?
     <Link to={`/recipes/${props.recipe.recipe.id}`}>
     <div>
     <Card
@@ -11,7 +13,8 @@ const SavedRecipeCard = (props) => {
     description={props.recipe.user.full_name}
     />
     </div>
-    </Link>
+    </Link> : null}
+    </div>
   )
 }
 
