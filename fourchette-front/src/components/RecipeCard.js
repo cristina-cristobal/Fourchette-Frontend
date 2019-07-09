@@ -3,6 +3,7 @@ import {Card, Image} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
 const RecipeCard = (props) => {
+
   return (
     <Link to={`/recipes/${props.recipe.id}`}>
     <div>

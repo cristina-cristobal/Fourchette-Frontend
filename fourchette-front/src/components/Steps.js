@@ -79,6 +79,7 @@ export default class Steps extends Component {
 
 
   render(){
+    console.log(this.props.newlySaved)
     return(
       <div>
         {this.state.toTweak ?
@@ -89,7 +90,7 @@ export default class Steps extends Component {
         <div>
         <button onClick={(() => {this.postTweak()})}>Tweak</button>
         <button onClick={() => {this.saveAndRedirect(this.props.recipe)}}>Save</button>
-        {this.state.saveClicked ? <Redirect to={'/profile'} /> : null}
+        {this.props.newlySaved ? <Redirect to={'/profile'} /> : null}
         </div>
       </div>
     )

@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+// import logo_transparent.png from '../imgs/logo_transparent'
 
 const Navbar = (props) => {
   return(
