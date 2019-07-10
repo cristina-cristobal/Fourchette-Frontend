@@ -86,9 +86,6 @@ export default class App extends Component{
     })
   }
 
-  tweakPost = (e) => {
-    console.log(e)
-  }
 
   render(){
   return (
@@ -100,7 +97,7 @@ export default class App extends Component{
         let recipeId = props.match.params.id
         let foundRecipe = this.state.allRecipes.find(r => r.id == recipeId)
           return (
-            <EditRecipe recipe={foundRecipe} tweakPost={this.tweakPost} />
+            <EditRecipe recipe={foundRecipe} addingTweak={this.addingTweak} />
           )
         }}/>
           <Route exact path='/recipes/:id' render={(props) => {

@@ -14,7 +14,8 @@ export default class TweakForm extends Component {
       notes: props.recipe.notes,
       ingredients: props.recipe.ingredients,
       image: props.recipe.image,
-      updatedRecipe: null
+      updatedRecipe: null,
+      newIngredients: ''
     }
   }
 
@@ -62,26 +63,18 @@ export default class TweakForm extends Component {
       body: JSON.stringify(patchedRecipe)
     })
     .then(res => res.json())
-    .then(adaptedRecipe => {this.setState({
-      updatedRecipe: adaptedRecipe,
+    .then(adaptedRecipe => {
 
-    })
 
-    fetch('http://localhost:3000/updatedingredients', {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        recipe_id: adaptedRecipe.id,
-        ingredients: this.state.ingredients
-      })
-    })
+      this.setState({
+      updatedRecipe: adaptedRecipe
+    },
+
+    () => {this.props.addingTweak(adaptedRecipe)}
+  )
   }
   )
   }
-
 
     addIngredient = () => {
       console.log("adding ingredient here")
@@ -99,8 +92,10 @@ export default class TweakForm extends Component {
       .then(res => res.json())
       .then(ing => {
         this.setState({
-          ingredients: [...this.state.ingredients, ing]
+          ingredients: [...this.state.ingredients, ing],
+          newIngredients: ing
         })
+        // string another post here to update the newly added ingredient
       })
     }
 

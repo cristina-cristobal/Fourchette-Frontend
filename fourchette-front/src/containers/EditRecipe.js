@@ -8,7 +8,7 @@ export default class EditRecipe extends Component {
       <div>
         Edit Recipe Pg
         <EditBar />
-        <TweakForm recipe={this.props.recipe} tweakPost={this.props.tweakPost} />
+        <TweakForm recipe={this.props.recipe} addingTweak={this.props.addingTweak} />
       </div>
     )
   }
