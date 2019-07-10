@@ -18,6 +18,7 @@ export default class TweakForm extends Component {
     }
   }
 
+
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -81,6 +82,28 @@ export default class TweakForm extends Component {
   )
   }
 
+
+    addIngredient = () => {
+      console.log("adding ingredient here")
+      fetch('http://localhost:3000/ingredients', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          ingredients: [""],
+          createdRecipe: {id: this.state.id}
+        })
+      })
+      .then(res => res.json())
+      .then(ing => {
+        this.setState({
+          ingredients: [...this.state.ingredients, ing]
+        })
+      })
+    }
+
   render(){
     return(
       <div>
@@ -117,6 +140,7 @@ export default class TweakForm extends Component {
             this.state.ingredients.map(ingredient => <IngredientField key={ingredient.id} ingredient={ingredient} handleIngredient={this.handleIngredients}/>)
           }
           </div>
+          <button onClick={(() => {this.addIngredient()})}> Add Ingredient </button>
 
             <br></br>
           <div>
