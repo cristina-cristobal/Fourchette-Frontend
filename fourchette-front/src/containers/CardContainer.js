@@ -5,11 +5,10 @@ import { Card } from 'semantic-ui-react'
 export default class CardContainer extends Component {
   render(){
     return(
-      <div>
-        <Card.Group itemsPerRow={4}>
+        <Card.Group itemsPerRow={3}>
+
         {this.props.recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />)}
         </Card.Group>
-      </div>
     )
   }
 }

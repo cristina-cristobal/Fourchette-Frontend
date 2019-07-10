@@ -87,9 +87,11 @@ export default class Steps extends Component {
     return(
       <div>
 
-      <Grid>
+      <Grid className="steps">
   <Grid.Row>
     <Grid.Column width={8}>
+    <br></br>
+    <h2>Ingredients</h2>
     <ul>
     {(this.props.recipe.ingredients) ? this.props.recipe.ingredients.map((ingredient) => <li key={ingredient.id}>{ingredient.description}</li>)  : null}
     </ul>
@@ -100,7 +102,9 @@ export default class Steps extends Component {
       {this.state.toTweak ?
         <Redirect to={`/recipes/${this.state.toTweak.id}/edit`} /> : null}
         <br></br>
+        <h2>Steps</h2>
         {(this.props.recipe.steps) ? this.props.recipe.steps : null}
+        <br></br>
         <br></br>
         <br></br>
         <div>
