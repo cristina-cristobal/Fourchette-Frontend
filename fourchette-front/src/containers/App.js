@@ -48,7 +48,6 @@ export default class App extends Component{
   }
 
   addingTweak = (tweaking) =>{
-    console.log('Adding Tweak:', tweaking)
     let allRecipesCopy = [...this.state.allRecipes]
 
     let recipeIndex = this.state.allRecipes.findIndex(rec => rec.id === tweaking.id)
@@ -58,7 +57,6 @@ export default class App extends Component{
     this.setState({
       allRecipes: allRecipesCopy
     })
-    console.log('allRecipes + new recipe:', this.state.allRecipes[this.state.allRecipes.length - 1])
   }
 
   like = (recipe) => {

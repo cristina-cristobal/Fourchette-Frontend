@@ -8,8 +8,7 @@ export default class Tweaks extends Component {
   render(){
     return(
       <div>
-        Tweak here!
-        {(this.props.recipe.prev_recipe_id !== null) ? "True" : "False"}
+        {/*(this.props.recipe.prev_recipe_id !== null) ? "True" : "False"*/}
       </div>
     )
   }

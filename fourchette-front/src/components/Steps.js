@@ -83,7 +83,6 @@ export default class Steps extends Component {
 
 
   render(){
-    console.log(this.props.newlySaved)
     return(
       <div>
         {this.state.toTweak ?
