@@ -51,7 +51,8 @@ export default class TweakForm extends Component {
       notes: this.state.notes,
       user_id: 1,
       prev_recipe_id: this.props.recipe.id,
-      image: this.state.image
+      image: this.state.image,
+      ingredients: this.state.ingredients
     }
 
     fetch(`http://localhost:3000/recipes/${this.state.id}`, {
@@ -69,35 +70,34 @@ export default class TweakForm extends Component {
       this.setState({
       updatedRecipe: adaptedRecipe
     },
-
     () => {this.props.addingTweak(adaptedRecipe)}
   )
   }
   )
   }
 
-    addIngredient = () => {
-      console.log("adding ingredient here")
-      fetch('http://localhost:3000/ingredients', {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          ingredients: [""],
-          createdRecipe: {id: this.state.id}
-        })
-      })
-      .then(res => res.json())
-      .then(ing => {
-        this.setState({
-          ingredients: [...this.state.ingredients, ing],
-          newIngredients: ing
-        })
-        // string another post here to update the newly added ingredient
-      })
-    }
+    // addIngredient = () => {
+    //   console.log("adding ingredient here")
+    //   fetch('http://localhost:3000/ingredients', {
+    //     method: "POST",
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'Accept': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       ingredients: [""],
+    //       createdRecipe: {id: this.state.id}
+    //     })
+    //   })
+    //   .then(res => res.json())
+    //   .then(ing => {
+    //     this.setState({
+    //       ingredients: [...this.state.ingredients, ing],
+    //       newIngredients: ing
+    //     })
+    //     // string another post here to update the newly added ingredient
+    //   })
+    // }
 
   render(){
     return(
