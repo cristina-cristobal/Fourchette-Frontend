@@ -135,7 +135,6 @@ export default class TweakForm extends Component {
             this.state.ingredients.map(ingredient => <IngredientField key={ingredient.id} ingredient={ingredient} handleIngredient={this.handleIngredients}/>)
           }
           </div>
-          <button onClick={(() => {this.addIngredient()})}> Add Ingredient </button>
 
             <br></br>
           <div>
