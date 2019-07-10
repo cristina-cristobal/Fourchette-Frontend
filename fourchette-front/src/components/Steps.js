@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Redirect, Link} from 'react-router-dom'
+import {Grid, Image, Button} from 'semantic-ui-react'
 
 export default class Steps extends Component {
   constructor(props){
@@ -85,16 +86,43 @@ export default class Steps extends Component {
   render(){
     return(
       <div>
-        {this.state.toTweak ?
-          <Redirect to={`/recipes/${this.state.toTweak.id}/edit`} /> : null}
-      Steps------------------------------
+
+      <Grid>
+  <Grid.Row>
+    <Grid.Column width={8}>
+    <ul>
+    {(this.props.recipe.ingredients) ? this.props.recipe.ingredients.map((ingredient) => <li key={ingredient.id}>{ingredient.description}</li>)  : null}
+    </ul>
+
+    </Grid.Column>
+    <Grid.Column width={8}>
+
+      {this.state.toTweak ?
+        <Redirect to={`/recipes/${this.state.toTweak.id}/edit`} /> : null}
+        <br></br>
         {(this.props.recipe.steps) ? this.props.recipe.steps : null}
-        ---------------------------------
+        <br></br>
+        <br></br>
         <div>
-        <button onClick={(() => {this.postTweak()})}>Tweak</button>
-        <button onClick={() => {this.saveAndRedirect(this.props.recipe)}}>Save</button>
+        <Button color="black" onClick={(() => {this.postTweak()})}>Tweak</Button>
+        <Button color="black" onClick={() => {this.saveAndRedirect(this.props.recipe)}}>Save</Button>
         {this.state.saveClicked ? <Redirect to={'/profile'} /> : null}
         </div>
+
+    </Grid.Column>
+  </Grid.Row>
+</Grid>
+
+
+
+
+
+
+
+
+
+
+
       </div>
     )
   }

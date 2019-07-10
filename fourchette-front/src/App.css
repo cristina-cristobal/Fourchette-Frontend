@@ -39,3 +39,17 @@
 .card {
   height: 200px
 }
+
+.recipe-body {
+  padding-right: 20%;
+  padding-left: 20%;
+  border-style: solid
+}
+
+.ingredients{
+  background-color: coral
+}
+
+.summary{
+border-style: solid
+}
