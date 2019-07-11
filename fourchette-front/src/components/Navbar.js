@@ -9,8 +9,7 @@ const Navbar = (props) => {
   return(
     <div className="ui inverted olive menu navbar">
      <Link to="/" className="item"><b>Home</b></Link>
-     <Link to="/profile" className="item">
-     {<img className="profile-small" src={profile} />}
+     <Link to="/profile" className="item"><b>Profile</b>
      </Link>
      {<img  src={fourchette} className="logo center"/>}
    </div>
@@ -18,3 +17,6 @@ const Navbar = (props) => {
 }
 
 export default Navbar
+
+
+// {<img className="profile-small" src={profile} />}
