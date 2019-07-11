@@ -55,7 +55,8 @@ export default class App extends Component{
     allRecipesCopy.splice(recipeIndex, 1, tweaking)
 
     this.setState({
-      allRecipes: allRecipesCopy
+      allRecipes: allRecipesCopy,
+      myTweakedRecipes: [...this.state.myTweakedRecipes, tweaking]
     })
   }
 
