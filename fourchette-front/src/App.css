@@ -80,17 +80,12 @@
   grid-gap: 50px
 }
 
-/* .card-css {
-  display: grid;
-  height: 200px;
-  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-  gap: 20px 5px;
-} */
 
 .recipe-info {
-  background-color: #F9F8F8;
+  background-color: #C9D5D1;
   color: black;
-  text: #7F7E7E
+  text: #7F7E7E;
+  padding: 4%
 }
 
 
@@ -98,4 +93,17 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.name-font {
+  font-size: 15px
+}
+
+.author-name {
+  font-size: 10px
+}
+
+.home{
+  padding-right: 15%;
+  padding-left: 15%
 }
