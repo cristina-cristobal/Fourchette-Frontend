@@ -11,10 +11,12 @@ export default class Summary extends Component {
           <Image className="summary-img" src={this.props.recipe.image} />
         </Grid.Column>
         <Grid.Column width={9} >
+        <p className="summary-text">
           {this.props.recipe.intro}
           <br></br>
           <br></br>
           --{this.props.recipe.user.full_name}
+        </p>
         </Grid.Column>
       </Grid>
       </div>

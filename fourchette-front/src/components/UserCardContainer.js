@@ -17,7 +17,11 @@ export default class UserCardContainer extends Component {
           {this.props.myTweakedRecipes.map(recipe => <RecipeCard recipe={recipe} key={recipe.id}/>)}
         </div>
       </Tab.Pane> },
-      { menuItem: 'Created Recipes', render: () => <Tab.Pane> {this.props.myRecipes.map((recipe) => <RecipeCard recipe={recipe} key={recipe.id}/>)} </Tab.Pane> },
+      { menuItem: 'Created Recipes', render: () => <Tab.Pane>
+      <div className="card-css">
+      {this.props.myRecipes.map((recipe) => <RecipeCard recipe={recipe} key={recipe.id}/>)}
+      </div>
+      </Tab.Pane> },
     ]
     return(
       <div>

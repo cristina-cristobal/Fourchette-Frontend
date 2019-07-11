@@ -54,7 +54,7 @@
 .summary{
   background-color: darkslategrey;
   color: white;
-  padding: 20%
+  padding: 20%;
 }
 
 
@@ -155,4 +155,9 @@
 
 .profile-small {
   width: 250px
+}
+
+.summary-text {
+  position: absolute;
+  top: 30%;
 }
