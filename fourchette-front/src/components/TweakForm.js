@@ -102,68 +102,70 @@ export default class TweakForm extends Component {
   render(){
     return(
       <div>
-      Recipe Form
-      Editing Recipe: {this.props.recipe.name}
       <br></br>
       <br></br>
         <Form className="form">
-          <div>
-            <Form.Input
-            label='Name'
-            value={this.state.name}
-            width={10}
-            name='name'
-            onChange={(event) => {this.handleChange(event)}}
-            />
-          </div>
-          <br></br>
-          <div>
-            <Form.Field
-            value={this.state.intro}
-            control={TextArea}
-            label='Introduction. Tell us about your recipe. What did you tweak? What did you serve it with?'
-            width={10}
-            name='intro'
-            onChange={(event) => {this.handleChange(event)}}
-            />
-          </div>
+          <div className="form-bg">
+                    <div>
+                      <Form.Input
+                      label='Name'
+                      value={this.state.name}
+                      width={10}
+                      name='name'
+                      onChange={(event) => {this.handleChange(event)}}
+                      />
+                    </div>
+                    <br></br>
+                    <div>
+                      <Form.Field
+                      value={this.state.intro}
+                      control={TextArea}
+                      label='Introduction. Tell us about your recipe. What did you tweak? What did you serve it with?'
+                      width={10}
+                      rows={7}
+                      name='intro'
+                      onChange={(event) => {this.handleChange(event)}}
+                      />
+                    </div>
 
-            <br></br>
-          <div>
-          <b>Ingredients</b>
-          {
-            this.state.ingredients.map(ingredient => <IngredientField key={ingredient.id} ingredient={ingredient} handleIngredient={this.handleIngredients}/>)
-          }
-          </div>
+                      <br></br>
+                    <div>
+                    <b>Ingredients</b>
+                    {
+                      this.state.ingredients.map(ingredient => <IngredientField key={ingredient.id} ingredient={ingredient} handleIngredient={this.handleIngredients}/>)
+                    }
+                    </div>
 
-            <br></br>
-          <div>
-            {(this.props.recipe.steps) ? (<Form.Field
-                control={TextArea}
-                label='Steps'
-                value={this.state.steps}
-                width={10}
-                rows={12}
-                name='steps'
-                onChange={(event) => {this.handleChange(event)}}
-              /> )
-              : null }
-          </div>
-          <br></br>
-          <div>
-            <Form.Field
-            value={this.state.notes}
-            control={TextArea}
-            label='Special Instructions (e.g., substitution ideas, tips on a tricky part of the recipe)'
-            width={10}
-            name='notes'
-            onChange={(event) => {this.handleChange(event)}}
-            />
-          </div>
-          <br></br>
-          <div>
-          <Form.Button onClick={this.patchRecipe}>Submit</Form.Button>
-          </div>
+                      <br></br>
+                    <div>
+                      {(this.props.recipe.steps) ? (<Form.Field
+                          control={TextArea}
+                          label='Steps'
+                          value={this.state.steps}
+                          width={10}
+                          rows={14}
+                          name='steps'
+                          onChange={(event) => {this.handleChange(event)}}
+                        /> )
+                        : null }
+                    </div>
+                    <br></br>
+                    <div>
+                      <Form.Field
+                      value={this.state.notes}
+                      control={TextArea}
+                      label='Special Instructions (e.g., substitution ideas, tips on a tricky part of the recipe)'
+                      width={10}
+                      rows={7}
+                      name='notes'
+                      onChange={(event) => {this.handleChange(event)}}
+                      />
+                    </div>
+                    <br></br>
+                    <div>
+                    <Form.Button color='black' onClick={this.patchRecipe}>Submit</Form.Button>
+                    </div>
+            </div>
         </Form>
         {this.state.updatedRecipe ?
           <Redirect to={`/recipes/${this.state.id}`} /> : null

@@ -4,6 +4,7 @@
 
 * {
     font-family: 'Noto Sans', sans-serif;
+    font-size: small
 }
 
 .logo {
@@ -56,14 +57,13 @@
   padding: 20%
 }
 
-.steps{
-
-}
 
 .form{
-
   padding-right: 20%;
-  padding-left: 20%
+  padding-left: 20%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cardimg {
@@ -117,4 +117,19 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.profile {
+  padding-right: 7%;
+  padding-left: 7%
+}
+
+.edit-recipe {
+
+}
+
+.form-bg {
+  background-color: #F2EFE5;
+  padding: 5%;
+  font-size: small
 }
