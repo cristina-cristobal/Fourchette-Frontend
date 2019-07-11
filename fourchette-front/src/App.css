@@ -121,7 +121,7 @@
 
 .profile {
   padding-right: 7%;
-  padding-left: 7%
+  padding-left: 7%;
 }
 
 .edit-recipe {
@@ -132,4 +132,23 @@
   background-color: #F2EFE5;
   padding: 5%;
   font-size: small
+}
+
+.user-info {
+  background-color: darkslategrey;
+  color: white
+}
+
+.profile-icon {
+  height: 200px
+}
+
+.profile-column {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(200px, 1fr));
+  /* grid-gap: 50px */
+}
+
+.user-font{
+  font-size: large
 }
