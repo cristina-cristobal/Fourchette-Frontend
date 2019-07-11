@@ -8,8 +8,12 @@
 }
 
 .logo {
-  height: 75px
+  height: 75px;
+  margin-left: 38.5%
+
 }
+
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
