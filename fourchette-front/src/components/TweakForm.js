@@ -106,7 +106,7 @@ export default class TweakForm extends Component {
       Editing Recipe: {this.props.recipe.name}
       <br></br>
       <br></br>
-        <Form>
+        <Form className="form">
           <div>
             <Form.Input
             label='Name'
