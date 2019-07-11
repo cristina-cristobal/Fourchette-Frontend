@@ -8,7 +8,7 @@ export default class Summary extends Component {
       <h1>{this.props.recipe.name}</h1>
       <Grid className="summary">
         <Grid.Column width={7}>
-          <Image src={this.props.recipe.image} />
+          <Image className="summary-img" src={this.props.recipe.image} />
         </Grid.Column>
         <Grid.Column width={9} >
           {this.props.recipe.intro}

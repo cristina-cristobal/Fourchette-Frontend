@@ -52,7 +52,8 @@
 
 .summary{
   background-color: darkslategrey;
-  color: white
+  color: white;
+  padding: 20%
 }
 
 .steps{
@@ -84,7 +85,6 @@
 .recipe-info {
   background-color: #C9D5D1;
   color: black;
-  text: #7F7E7E;
   padding: 4%
 }
 
@@ -106,4 +106,15 @@
 .home{
   padding-right: 15%;
   padding-left: 15%
+}
+
+.body {background-color: white;}
+
+.summary-img {
+  object-fit: cover;
+  width: 100%;
+  height: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
