@@ -76,28 +76,6 @@ export default class TweakForm extends Component {
   )
   }
 
-    // addIngredient = () => {
-    //   console.log("adding ingredient here")
-    //   fetch('http://localhost:3000/ingredients', {
-    //     method: "POST",
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'Accept': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       ingredients: [""],
-    //       createdRecipe: {id: this.state.id}
-    //     })
-    //   })
-    //   .then(res => res.json())
-    //   .then(ing => {
-    //     this.setState({
-    //       ingredients: [...this.state.ingredients, ing],
-    //       newIngredients: ing
-    //     })
-    //     // string another post here to update the newly added ingredient
-    //   })
-    // }
 
   render(){
     return(
